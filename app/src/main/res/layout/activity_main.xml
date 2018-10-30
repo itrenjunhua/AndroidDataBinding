@@ -1,18 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-</android.support.constraint.ConstraintLayout>
+        <variable
+            name="presenter"
+            type="com.ren.databinding.activity.MainActivity.Presenter" />
+    </data>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/binding_data}"
+                android:onClick="@{presenter::openBindingDataActivity}"
+                android:textAllCaps="false"
+                android:textColor="@{@color/color_default_text}"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/binding_event}"
+                android:textAllCaps="false"
+                android:textColor="@{@color/color_default_text}"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/binding_collection}"
+                android:textAllCaps="false"
+                android:textColor="@{@color/color_default_text}"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/binding_list}"
+                android:textAllCaps="false"
+                android:textColor="@{@color/color_default_text}"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/binding_include}"
+                android:textAllCaps="false"
+                android:textColor="@{@color/color_default_text}"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/binding_view_stub}"
+                android:textAllCaps="false"
+                android:textColor="@{@color/color_default_text}"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/binding_adapter}"
+                android:textAllCaps="false"
+                android:textColor="@{@color/color_default_text}"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/binding_methods}"
+                android:textAllCaps="false"
+                android:textColor="@{@color/color_default_text}"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/binding_converters}"
+                android:textAllCaps="false"
+                android:textColor="@{@color/color_default_text}"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/binding_component"
+                android:textAllCaps="false"
+                android:onClick="@{presenter::changeComponent}"
+                android:textColor="@color/color_default_text"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</layout>

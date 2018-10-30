@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="presenter"
+            type="com.ren.databinding.activity.BindingDataActivity.Presenter"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{@string/binding_one_way}"
+        android:textAllCaps="false"
+        android:textColor="@{@color/color_default_text}"
+        android:textSize="16sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{@string/binding_two_way}"
+        android:textAllCaps="false"
+        android:textColor="@{@color/color_default_text}"
+        android:textSize="16sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{@string/binding_base_observable}"
+        android:textAllCaps="false"
+        android:textColor="@{@color/color_default_text}"
+        android:textSize="16sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{@string/binding_observable}"
+            android:textAllCaps="false"
+            android:textColor="@{@color/color_default_text}"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</layout>
