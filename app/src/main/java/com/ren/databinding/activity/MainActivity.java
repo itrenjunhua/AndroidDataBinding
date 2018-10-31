@@ -26,8 +26,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public class Presenter {
-        public void openBindingDataActivity(View view) {
-            startActivity(new Intent(MainActivity.this, BindingDataActivity.class));
+        public void openDataBindingActivity(View view) {
+            startActivity(new Intent(MainActivity.this, DataBindingActivity.class));
+        }
+
+        public void openEventBindingActivity(View view) {
+            startActivity(new Intent(MainActivity.this, EventBindingActivity.class));
+        }
+
+        public void openCollectionBindingActivity(View view) {
+            startActivity(new Intent(MainActivity.this, CollectionBindingActivity.class));
+        }
+
+        public void openListBindingActivity(View view) {
+            startActivity(new Intent(MainActivity.this, ListBindingActivity.class));
+        }
+
+        public void openIncludeBindingActivity(View view) {
+            startActivity(new Intent(MainActivity.this, IncludeBindingActivity.class));
+        }
+
+        public void openViewStubBindingActivity(View view) {
+            startActivity(new Intent(MainActivity.this, ViewStubBindingActivity.class));
+        }
+
+        public void openBindingAdapterActivity(View view) {
+            startActivity(new Intent(MainActivity.this, BindingAdapterActivity.class));
+        }
+
+        public void openBindingMethodsActivity(View view) {
+            startActivity(new Intent(MainActivity.this, BindingMethodsActivity.class));
+        }
+
+        public void openConvertersBindingActivity(View view) {
+            startActivity(new Intent(MainActivity.this, ConvertersActivity.class));
         }
 
         public void changeComponent(View view) {

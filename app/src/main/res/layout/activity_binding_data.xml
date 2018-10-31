@@ -3,7 +3,7 @@
     <data>
         <variable
             name="presenter"
-            type="com.ren.databinding.activity.BindingDataActivity.Presenter"/>
+            type="com.ren.databinding.activity.DataBindingActivity.Presenter"/>
     </data>
 
     <LinearLayout
@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@{@string/binding_one_way}"
+        android:onClick="@{presenter::openBindingOneWayActivity}"
         android:textAllCaps="false"
         android:textColor="@{@color/color_default_text}"
         android:textSize="16sp" />
@@ -24,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@{@string/binding_two_way}"
+        android:onClick="@{presenter::openBindingTwoWayActivity}"
         android:textAllCaps="false"
         android:textColor="@{@color/color_default_text}"
         android:textSize="16sp" />
@@ -32,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@{@string/binding_base_observable}"
+        android:onClick="@{presenter::openBaseObservableActivity}"
         android:textAllCaps="false"
         android:textColor="@{@color/color_default_text}"
         android:textSize="16sp" />
@@ -40,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{@string/binding_observable}"
+            android:onClick="@{presenter::openObservableActivity}"
             android:textAllCaps="false"
             android:textColor="@{@color/color_default_text}"
             android:textSize="16sp" />

@@ -21,9 +21,71 @@
         </activity>
 
         <activity
-            android:name=".activity.BindingDataActivity"
+            android:name=".activity.DataBindingActivity"
             android:label="@string/binding_data"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.data.DataOneWayActivity"
+            android:label="@string/binding_one_way"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.data.DataTwoWayActivity"
+            android:label="@string/binding_two_way"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.data.BaseObservableActivity"
+            android:label="@string/binding_base_observable"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.data.ObservableXxxActivity"
+            android:label="@string/binding_observable"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".activity.EventBindingActivity"
+            android:label="@string/binding_event"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.CollectionBindingActivity"
+            android:label="@string/binding_collection"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ListBindingActivity"
+            android:label="@string/binding_list"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.IncludeBindingActivity"
+            android:label="@string/binding_include"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ViewStubBindingActivity"
+            android:label="@string/binding_view_stub"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.BindingAdapterActivity"
+            android:label="@string/binding_adapter"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.BindingMethodsActivity"
+            android:label="@string/binding_methods"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ConvertersActivity"
+            android:label="@string/binding_converters"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

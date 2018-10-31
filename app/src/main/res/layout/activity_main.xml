@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{@string/binding_data}"
-                android:onClick="@{presenter::openBindingDataActivity}"
+                android:onClick="@{presenter::openDataBindingActivity}"
                 android:textAllCaps="false"
                 android:textColor="@{@color/color_default_text}"
                 android:textSize="16sp" />
@@ -31,6 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{@string/binding_event}"
+                android:onClick="@{presenter::openEventBindingActivity}"
                 android:textAllCaps="false"
                 android:textColor="@{@color/color_default_text}"
                 android:textSize="16sp" />
@@ -39,6 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{@string/binding_collection}"
+                android:onClick="@{presenter::openCollectionBindingActivity}"
                 android:textAllCaps="false"
                 android:textColor="@{@color/color_default_text}"
                 android:textSize="16sp" />
@@ -47,6 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{@string/binding_list}"
+                android:onClick="@{presenter::openListBindingActivity}"
                 android:textAllCaps="false"
                 android:textColor="@{@color/color_default_text}"
                 android:textSize="16sp" />
@@ -55,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{@string/binding_include}"
+                android:onClick="@{presenter::openIncludeBindingActivity}"
                 android:textAllCaps="false"
                 android:textColor="@{@color/color_default_text}"
                 android:textSize="16sp" />
@@ -63,6 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{@string/binding_view_stub}"
+                android:onClick="@{presenter::openViewStubBindingActivity}"
                 android:textAllCaps="false"
                 android:textColor="@{@color/color_default_text}"
                 android:textSize="16sp" />
@@ -71,6 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{@string/binding_adapter}"
+                android:onClick="@{presenter::openBindingAdapterActivity}"
                 android:textAllCaps="false"
                 android:textColor="@{@color/color_default_text}"
                 android:textSize="16sp" />
@@ -79,6 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{@string/binding_methods}"
+                android:onClick="@{presenter::openBindingMethodsActivity}"
                 android:textAllCaps="false"
                 android:textColor="@{@color/color_default_text}"
                 android:textSize="16sp" />
@@ -87,6 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{@string/binding_converters}"
+                android:onClick="@{presenter::openConvertersBindingActivity}"
                 android:textAllCaps="false"
                 android:textColor="@{@color/color_default_text}"
                 android:textSize="16sp" />
