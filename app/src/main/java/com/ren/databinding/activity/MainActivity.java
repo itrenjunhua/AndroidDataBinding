@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 修改 Component，修改的是所有的在 xml 用 DataBinding 形式绑定的属性并且在 Component 中的 XxxAdapter 中处理的属性
         public void changeComponent(View view) {
-            DataBindingUtil.setDefaultComponent(MyApplication.isTestComponent ? new TestBindingComponent() : new ReleaseBindingComponent());
+            DataBindingUtil.setDefaultComponent(MyApplication.isTestComponent ? new ReleaseBindingComponent() : new TestBindingComponent());
             MyApplication.isTestComponent = !MyApplication.isTestComponent;
             recreate();
         }

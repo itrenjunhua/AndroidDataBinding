@@ -18,8 +18,10 @@ import android.widget.TextView;
  * ======================================================================
  */
 public abstract class MyBindingAdapter {
-    @BindingAdapter("android:text")
-    public abstract void setText(TextView view,String value);
+    // 注释掉该方法，如果不注释掉，在双向绑定时就需要对 view 如果是EditText时做特殊处理，
+    // 增加文字改变监听，防止出现死循环。主要针对的是 "android:text" 属性
+//    @BindingAdapter("android:text")
+//    public abstract void setText(TextView view,String value);
 
     @BindingAdapter("android:textColor")
     public abstract void setTextColor(TextView view, int color);

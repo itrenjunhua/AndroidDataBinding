@@ -19,10 +19,10 @@ import com.ren.databinding.R;
  * ======================================================================
  */
 public class ReleaseBindingAdapter extends MyBindingAdapter {
-    @Override
-    public void setText(TextView view, String value) {
-        view.setText(value);
-    }
+//    @Override
+//    public void setText(TextView view, String value) {
+//        view.setText(value);
+//    }
 
     @Override
     public void setTextColor(TextView view, int color) {
