@@ -1,6 +1,9 @@
 package com.ren.databinding;
 
 import android.app.Application;
+import android.databinding.DataBindingUtil;
+
+import com.ren.databinding.component.ReleaseBindingComponent;
 
 /**
  * ======================================================================
@@ -22,5 +25,6 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        DataBindingUtil.setDefaultComponent(new ReleaseBindingComponent());
     }
 }
