@@ -56,14 +56,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, ViewStubBindingActivity.class));
         }
 
-        // BindingAdapter/自定义属性示例页面
-        public void openBindingAdapterActivity(View view) {
-            startActivity(new Intent(MainActivity.this, BindingAdapterActivity.class));
-        }
-
-        // BindingMethods/属性方法映射示例页面
-        public void openBindingMethodsActivity(View view) {
-            startActivity(new Intent(MainActivity.this, BindingMethodsActivity.class));
+        // 自定义属性绑定
+        public void openCustomBindingActivity(View view) {
+            startActivity(new Intent(MainActivity.this, CustomBindingActivity.class));
         }
 
         // Converters/转换示例页面

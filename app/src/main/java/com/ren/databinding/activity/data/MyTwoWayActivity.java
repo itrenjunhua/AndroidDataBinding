@@ -1,4 +1,4 @@
-package com.ren.databinding.activity;
+package com.ren.databinding.activity.data;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.ren.databinding.R;
-import com.ren.databinding.databinding.ActivityBindingAdapterBinding;
+import com.ren.databinding.databinding.ActivityDataMyTwoBinding;
 
 /**
  * ======================================================================
@@ -14,7 +14,7 @@ import com.ren.databinding.databinding.ActivityBindingAdapterBinding;
  * 作者：Renj
  * 邮箱：renjunhua@anlovek.com
  * <p>
- * 创建时间：2018-10-31   10:03
+ * 创建时间：2018-10-31   15:48
  * <p>
  * 描述：
  * <p>
@@ -22,12 +22,12 @@ import com.ren.databinding.databinding.ActivityBindingAdapterBinding;
  * <p>
  * ======================================================================
  */
-public class BindingAdapterActivity extends AppCompatActivity {
-    private ActivityBindingAdapterBinding binding;
+public class MyTwoWayActivity extends AppCompatActivity {
+    private ActivityDataMyTwoBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_binding_adapter);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_data_my_two);
     }
 }

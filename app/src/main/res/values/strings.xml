@@ -6,14 +6,19 @@
     <string name="binding_two_way">双向绑定</string>
     <string name="binding_base_observable">继承BaseObservable</string>
     <string name="binding_observable">使用ObservableXxx</string>
+    <string name="binding_my_two">自定义双向绑定</string>
 
     <string name="binding_event">事件绑定</string>
     <string name="binding_collection">集合</string>
     <string name="binding_list">列表</string>
     <string name="binding_include">Include</string>
     <string name="binding_view_stub">ViewStub</string>
-    <string name="binding_adapter">BindingAdapter</string>
-    <string name="binding_methods">BindingMethods</string>
     <string name="binding_converters">Converters</string>
     <string name="binding_component">修改默认Component</string>
+
+    <string name="binding_custom">自定义属性</string>
+    <string name="binding_adapter">BindingAdapter</string>
+    <string name="binding_methods">BindingMethods</string>
+    <string name="binding_inverse_adapter">InverseBindingAdapter</string>
+    <string name="binding_inverse_methods">InverseBindingMethods</string>
 </resources>

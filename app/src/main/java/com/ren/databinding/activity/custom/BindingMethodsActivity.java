@@ -1,4 +1,4 @@
-package com.ren.databinding.activity;
+package com.ren.databinding.activity.custom;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;

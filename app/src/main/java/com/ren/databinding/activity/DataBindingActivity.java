@@ -11,6 +11,7 @@ import com.ren.databinding.R;
 import com.ren.databinding.activity.data.BaseObservableActivity;
 import com.ren.databinding.activity.data.DataOneWayActivity;
 import com.ren.databinding.activity.data.DataTwoWayActivity;
+import com.ren.databinding.activity.data.MyTwoWayActivity;
 import com.ren.databinding.activity.data.ObservableXxxActivity;
 import com.ren.databinding.databinding.ActivityBindingDataBinding;
 
@@ -58,6 +59,11 @@ public class DataBindingActivity extends AppCompatActivity {
         // 部分字段 ObservableXxx
         public void openObservableActivity(View view) {
             startActivity(new Intent(DataBindingActivity.this, ObservableXxxActivity.class));
+        }
+
+        // 自定义双向绑定
+        public void openMyTwoWayActivity(View view){
+            startActivity(new Intent(DataBindingActivity.this, MyTwoWayActivity.class));
         }
     }
 }

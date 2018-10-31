@@ -48,6 +48,15 @@
             android:textColor="@{@color/color_default_text}"
             android:textSize="16sp" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{@string/binding_my_two}"
+            android:onClick="@{presenter::openMyTwoWayActivity}"
+            android:textAllCaps="false"
+            android:textColor="@{@color/color_default_text}"
+            android:textSize="16sp" />
+
     </LinearLayout>
 
 </layout>

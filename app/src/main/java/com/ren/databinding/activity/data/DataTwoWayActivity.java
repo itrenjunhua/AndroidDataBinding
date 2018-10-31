@@ -31,7 +31,7 @@ import com.ren.databinding.entity.TwoWayBean;
  * {@code TabHost android:currentTab} <br/>
  * {@code TextView android:text} <br/>
  * {@code TimePicker android:hour, android:minute} <br/>
- * 当然，其他的控件也可以使用 {@link android.databinding.BindingAdapter} 、 {@link android.databinding.BindingMethods} 自定义双向绑定。
+ * 当然，其他的控件也可以使用 {@link android.databinding.InverseBindingAdapter} 、 {@link android.databinding.InverseBindingMethods} 自定义双向绑定。
  * <p>
  * 修订历史：
  * <p>

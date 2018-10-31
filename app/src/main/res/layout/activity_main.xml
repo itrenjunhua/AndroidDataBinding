@@ -75,17 +75,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{@string/binding_adapter}"
-                android:onClick="@{presenter::openBindingAdapterActivity}"
-                android:textAllCaps="false"
-                android:textColor="@{@color/color_default_text}"
-                android:textSize="16sp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{@string/binding_methods}"
-                android:onClick="@{presenter::openBindingMethodsActivity}"
+                android:text="@{@string/binding_custom}"
+                android:onClick="@{presenter::openCustomBindingActivity}"
                 android:textAllCaps="false"
                 android:textColor="@{@color/color_default_text}"
                 android:textSize="16sp" />

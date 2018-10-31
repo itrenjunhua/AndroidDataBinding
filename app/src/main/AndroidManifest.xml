@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
 
+        <!-- =================【start】 数据绑定部分 【start】=================== -->
         <activity
             android:name=".activity.DataBindingActivity"
             android:label="@string/binding_data"
@@ -45,6 +46,11 @@
             android:label="@string/binding_observable"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.data.MyTwoWayActivity"
+            android:label="@string/binding_my_two"
+            android:screenOrientation="portrait" />
+        <!-- =================【end】 数据绑定部分 【end】=================== -->
 
         <activity
             android:name=".activity.EventBindingActivity"
@@ -71,15 +77,32 @@
             android:label="@string/binding_view_stub"
             android:screenOrientation="portrait" />
 
+        <!-- =================【start】 自定义属性部分 【start】=================== -->
         <activity
-            android:name=".activity.BindingAdapterActivity"
+            android:name=".activity.CustomBindingActivity"
+            android:label="@string/binding_custom"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.custom.BindingAdapterActivity"
             android:label="@string/binding_adapter"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.BindingMethodsActivity"
+            android:name=".activity.custom.BindingMethodsActivity"
             android:label="@string/binding_methods"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.custom.BindingInverseAdapterActivity"
+            android:label="@string/binding_inverse_adapter"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.custom.BindingInverseMethodsActivity"
+            android:label="@string/binding_inverse_methods"
+            android:screenOrientation="portrait" />
+        <!-- =================【end】 自定义属性部分 【end】=================== -->
 
         <activity
             android:name=".activity.ConvertersActivity"
