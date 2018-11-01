@@ -3,12 +3,87 @@
 
     <data>
 
+        <variable
+            name="btContent"
+            type="android.databinding.ObservableField&lt;String>" />
+
+        <variable
+            name="presenter"
+            type="com.renj.databinding.activity.EventBindingActivity.Presenter" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/default_padding">
+
+        <Button
+            android:id="@+id/bt_click1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter.click}"
+            android:text="通过id区分事件1"
+            android:textColor="@color/color_main_text"
+            android:textSize="@dimen/default_text_size" />
+
+        <Button
+            android:id="@+id/bt_click2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter::click}"
+            android:text="通过id区分事件2"
+            android:textColor="@color/color_main_text"
+            android:textSize="@dimen/default_text_size" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter.clickMethod1}"
+            android:text="调用单个方法1"
+            android:textColor="@color/color_main_text"
+            android:textSize="@dimen/default_text_size" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter::clickMethod2}"
+            android:text="调用单个方法2"
+            android:textColor="@color/color_main_text"
+            android:textSize="@dimen/default_text_size" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{(view) -> presenter.lambdaMethod(view)}"
+            android:text="Lambda表达式方式"
+            android:textAllCaps="false"
+            android:textColor="@color/color_main_text"
+            android:textSize="@dimen/default_text_size" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick='@{(view) -> presenter.paramsMethod(view,context,"params")}'
+            android:text="传递参数"
+            android:textColor="@color/color_main_text"
+            android:textSize="@dimen/default_text_size" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:afterTextChanged="@{presenter.onEditTextChange}"
+            android:hint="绑定 afterTextChanged 事件"
+            android:textColor="@color/color_main_text"
+            android:textColorHint="@color/color_main_hint"
+            android:textSize="@dimen/default_text_size" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{btContent}"
+            android:textColor="@color/color_main_text"
+            android:textSize="@dimen/default_text_size" />
 
     </LinearLayout>
 
