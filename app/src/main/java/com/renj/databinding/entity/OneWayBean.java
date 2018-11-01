@@ -1,5 +1,8 @@
 package com.renj.databinding.entity;
 
+import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
+
 /**
  * ======================================================================
  * <p>
@@ -18,6 +21,12 @@ public class OneWayBean {
     private String firstName;
     private String lastName;
     private int age;
+
+    public final ObservableField<String> oString = new ObservableField<>();
+    public final ObservableInt oInt = new ObservableInt();
+
+    public OneWayBean() {
+    }
 
     public OneWayBean(String firstName, String lastName, int age) {
         this.firstName = firstName;

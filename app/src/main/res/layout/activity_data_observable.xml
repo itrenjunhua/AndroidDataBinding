@@ -3,12 +3,107 @@
 
     <data>
 
+        <variable
+            name="observableMap"
+            type="android.databinding.ObservableMap&lt;String,String>"/>
+
+        <variable
+            name="oneWayBean"
+            type="com.renj.databinding.entity.OneWayBean"/>
+
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="firstName:"
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{observableMap["firstName"]}'
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_line_space"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lastName:"
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{observableMap["lastName"]}'
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_line_space"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="oneWayBean.ObservableField:"
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{oneWayBean.oString.get()}'
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_line_space"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="oneWayBean.ObservableInt:"
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{String.valueOf(oneWayBean.oInt.get())}'
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
