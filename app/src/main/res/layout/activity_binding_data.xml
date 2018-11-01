@@ -3,7 +3,7 @@
     <data>
         <variable
             name="presenter"
-            type="com.ren.databinding.activity.DataBindingActivity.Presenter"/>
+            type="com.renj.databinding.activity.DataBindingActivity.Presenter"/>
     </data>
 
     <LinearLayout

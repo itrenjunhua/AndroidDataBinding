@@ -5,7 +5,7 @@
 
         <variable
             name="twoWayBean"
-            type="com.ren.databinding.entity.TwoWayBean" />
+            type="com.renj.databinding.entity.TwoWayBean" />
     </data>
 
     <LinearLayout

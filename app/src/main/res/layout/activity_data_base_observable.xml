@@ -2,13 +2,50 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
+        <variable
+            name="twoWayBean"
+            type="com.renj.databinding.entity.TwoWayBean"/>
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="firstName"
+            android:text="@={twoWayBean.fastName}"
+            android:textColor="@color/color_main_text"
+            android:textColorHint="@color/color_main_hint"
+            android:textSize="@dimen/default_text_size" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_line_space"
+            android:text="@{twoWayBean.fastName}"
+            android:textColor="@color/color_main_text"
+            android:textSize="@dimen/default_text_size" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_line_space"
+            android:hint="lastName"
+            android:text="@={twoWayBean.lastName}"
+            android:textColor="@color/color_main_text"
+            android:textColorHint="@color/color_main_hint"
+            android:textSize="@dimen/default_text_size" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_line_space"
+            android:text="@{twoWayBean.lastName}"
+            android:textColor="@color/color_main_text"
+            android:textSize="@dimen/default_text_size" />
 
     </LinearLayout>
 

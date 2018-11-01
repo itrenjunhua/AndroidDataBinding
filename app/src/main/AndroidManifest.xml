@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ren.databinding">
+    package="com.renj.databinding">
 
     <application
-        android:name=".MyApplication"
+        android:name="com.renj.databinding.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.renj.databinding.activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,90 +22,90 @@
 
         <!-- =================【start】 数据绑定部分 【start】=================== -->
         <activity
-            android:name=".activity.DataBindingActivity"
+            android:name="com.renj.databinding.activity.DataBindingActivity"
             android:label="@string/binding_data"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.data.DataOneWayActivity"
+            android:name="com.renj.databinding.activity.data.DataOneWayActivity"
             android:label="@string/binding_one_way"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.data.DataTwoWayActivity"
+            android:name="com.renj.databinding.activity.data.DataTwoWayActivity"
             android:label="@string/binding_two_way"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.data.BaseObservableActivity"
+            android:name="com.renj.databinding.activity.data.BaseObservableActivity"
             android:label="@string/binding_base_observable"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.data.ObservableXxxActivity"
+            android:name="com.renj.databinding.activity.data.ObservableXxxActivity"
             android:label="@string/binding_observable"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.data.MyTwoWayActivity"
+            android:name="com.renj.databinding.activity.data.MyTwoWayActivity"
             android:label="@string/binding_my_two"
             android:screenOrientation="portrait" />
         <!-- =================【end】 数据绑定部分 【end】=================== -->
 
         <activity
-            android:name=".activity.EventBindingActivity"
+            android:name="com.renj.databinding.activity.EventBindingActivity"
             android:label="@string/binding_event"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.CollectionBindingActivity"
+            android:name="com.renj.databinding.activity.CollectionBindingActivity"
             android:label="@string/binding_collection"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.ListBindingActivity"
+            android:name="com.renj.databinding.activity.ListBindingActivity"
             android:label="@string/binding_list"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.IncludeBindingActivity"
+            android:name="com.renj.databinding.activity.IncludeBindingActivity"
             android:label="@string/binding_include"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.ViewStubBindingActivity"
+            android:name="com.renj.databinding.activity.ViewStubBindingActivity"
             android:label="@string/binding_view_stub"
             android:screenOrientation="portrait" />
 
         <!-- =================【start】 自定义属性部分 【start】=================== -->
         <activity
-            android:name=".activity.CustomBindingActivity"
+            android:name="com.renj.databinding.activity.CustomBindingActivity"
             android:label="@string/binding_custom"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.custom.BindingAdapterActivity"
+            android:name="com.renj.databinding.activity.custom.BindingAdapterActivity"
             android:label="@string/binding_adapter"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.custom.BindingMethodsActivity"
+            android:name="com.renj.databinding.activity.custom.BindingMethodsActivity"
             android:label="@string/binding_methods"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.custom.BindingInverseAdapterActivity"
+            android:name="com.renj.databinding.activity.custom.BindingInverseAdapterActivity"
             android:label="@string/binding_inverse_adapter"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.custom.BindingInverseMethodsActivity"
+            android:name="com.renj.databinding.activity.custom.BindingInverseMethodsActivity"
             android:label="@string/binding_inverse_methods"
             android:screenOrientation="portrait" />
         <!-- =================【end】 自定义属性部分 【end】=================== -->
 
         <activity
-            android:name=".activity.ConvertersActivity"
+            android:name="com.renj.databinding.activity.ConvertersActivity"
             android:label="@string/binding_converters"
             android:screenOrientation="portrait" />
 

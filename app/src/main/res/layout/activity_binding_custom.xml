@@ -4,7 +4,7 @@
     <data>
         <variable
             name="presenter"
-            type="com.ren.databinding.activity.CustomBindingActivity.Presenter"/>
+            type="com.renj.databinding.activity.CustomBindingActivity.Presenter"/>
     </data>
 
     <LinearLayout

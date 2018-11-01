@@ -5,7 +5,7 @@
 
         <variable
             name="presenter"
-            type="com.ren.databinding.activity.MainActivity.Presenter" />
+            type="com.renj.databinding.activity.MainActivity.Presenter" />
     </data>
 
     <android.support.v4.widget.NestedScrollView
