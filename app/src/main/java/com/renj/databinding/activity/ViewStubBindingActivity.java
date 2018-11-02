@@ -4,9 +4,13 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewStub;
 
 import com.renj.databinding.R;
 import com.renj.databinding.databinding.ActivityBindingViewStubBinding;
+import com.renj.databinding.databinding.ViewStubLayoutBinding;
+import com.renj.databinding.entity.UserBean;
 
 /**
  * ======================================================================
@@ -29,5 +33,17 @@ public class ViewStubBindingActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_binding_view_stub);
+
+        // 设置监听，控件显示完成之后绑定数据
+        binding.viewStub.setOnInflateListener(new ViewStub.OnInflateListener() {
+            @Override
+            public void onInflate(ViewStub stub, View inflated) {
+                ViewStubLayoutBinding viewStubLayoutBinding = DataBindingUtil.bind(inflated);
+                viewStubLayoutBinding.setUser(new UserBean("李四", "湖南省长沙市"));
+            }
+        });
+
+        // 显示 ViewStub 控件
+        binding.viewStub.getViewStub().inflate();
     }
 }
