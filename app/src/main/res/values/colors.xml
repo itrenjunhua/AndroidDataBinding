@@ -6,8 +6,12 @@
 
     <color name="color_default_text">#222222</color>
     <color name="color_test_text">#F53842</color>
+    <color name="color_white">#FFFFFF</color>
 
     <color name="color_main_text">#333333</color>
     <color name="color_main_hint">#AAAAAA</color>
     <color name="color_second_text">#666666</color>
+
+    <color name="color_converter_color1">#FF00FF</color>
+    <color name="color_converter_color2">#0000FF</color>
 </resources>

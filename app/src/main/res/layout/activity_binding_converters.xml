@@ -3,12 +3,80 @@
 
     <data>
 
+        <variable
+            name="map"
+            type="android.databinding.ObservableArrayMap&lt;String,String>" />
+
+        <variable
+            name="presenter"
+            type="com.renj.databinding.activity.ConvertersActivity.Presenter" />
+
+        <variable
+            name="status"
+            type="Boolean" />
+
+        <variable
+            name="background"
+            type="String" />
+
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/default_padding">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Object Converters："
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/default_text_size" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{map[`key0`]}"
+            android:textColor="@color/color_default_text"
+            android:textSize="@dimen/default_text_size" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding"
+            android:text="Custom Converters：将 int 类型的 Color 转换为 ColorDrawable"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/default_text_size" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter::changeColor}"
+            android:text="切换颜色"
+            android:textColor="@color/color_default_text"
+            android:textSize="@dimen/default_text_size" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="@dimen/default_line_space">
+
+            <View
+                android:id="@+id/view_converter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@{status ? @color/color_converter_color1 : @color/color_converter_color2}" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_padding"
+                android:text="@{background}"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/default_min_text_size" />
+        </FrameLayout>
 
     </LinearLayout>
 

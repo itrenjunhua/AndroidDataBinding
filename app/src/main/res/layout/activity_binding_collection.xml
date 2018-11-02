@@ -93,7 +93,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="key0："
+                android:text='["key0"]：'
                 android:textColor="@color/color_main_text"
                 android:textSize="@dimen/default_text_size" />
 
@@ -115,14 +115,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="key1："
+                android:text="[`key1`]："
                 android:textColor="@color/color_main_text"
                 android:textSize="@dimen/default_text_size" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text='@{observableArrayMap["key1"]}'
+                android:text="@{observableArrayMap[`key1`]}"
                 android:textColor="@color/color_main_text"
                 android:textSize="@dimen/default_text_size" />
 
