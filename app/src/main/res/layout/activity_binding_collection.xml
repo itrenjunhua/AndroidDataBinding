@@ -3,12 +3,130 @@
 
     <data>
 
+        <variable
+            name="observableArrayList"
+            type="android.databinding.ObservableArrayList&lt;String>" />
+
+        <variable
+            name="observableArrayMap"
+            type="android.databinding.ObservableArrayMap&lt;String,String>" />
+
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/default_padding">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ObservableArrayList集合："
+            android:textColor="@color/color_main_text"
+            android:textSize="@dimen/default_text_size" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_line_space"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="index[0]："
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{observableArrayList[0]}"
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_line_space"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="index[1]："
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{observableArrayList[1]}"
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="@dimen/default_padding"
+            android:background="@color/color_main_hint" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding"
+            android:text="ObservableArrayMap集合："
+            android:textColor="@color/color_main_text"
+            android:textSize="@dimen/default_text_size" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_line_space"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="key0："
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{observableArrayMap["key0"]}'
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_line_space"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="key1："
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{observableArrayMap["key1"]}'
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
