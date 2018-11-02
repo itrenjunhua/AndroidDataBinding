@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.renj.databinding.R;
 import com.renj.databinding.databinding.ActivityBindingIncludeBinding;
+import com.renj.databinding.entity.UserBean;
 
 /**
  * ======================================================================
@@ -28,6 +29,9 @@ public class IncludeBindingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_binding_include);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_binding_include);
+
+        UserBean userBean = new UserBean("张三", "浙江省杭州市");
+        binding.setUser(userBean);
     }
 }
