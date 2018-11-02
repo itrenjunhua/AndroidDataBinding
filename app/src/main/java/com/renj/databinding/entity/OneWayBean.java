@@ -28,6 +28,10 @@ public class OneWayBean {
     public OneWayBean() {
     }
 
+    public OneWayBean(String firstName) {
+        this.firstName = firstName;
+    }
+
     public OneWayBean(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;

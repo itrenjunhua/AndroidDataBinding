@@ -75,6 +75,24 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@{@string/binding_import}"
+                android:onClick="@{presenter::openImportActivity}"
+                android:textAllCaps="false"
+                android:textColor="@{@color/color_default_text}"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/binding_custom_name}"
+                android:onClick="@{presenter::openCustomClassNameActivity}"
+                android:textAllCaps="false"
+                android:textColor="@{@color/color_default_text}"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@{@string/binding_custom}"
                 android:onClick="@{presenter::openCustomBindingActivity}"
                 android:textAllCaps="false"

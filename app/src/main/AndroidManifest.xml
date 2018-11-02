@@ -77,6 +77,14 @@
             android:label="@string/binding_view_stub"
             android:screenOrientation="portrait" />
 
+        <activity android:name=".activity.ImportActivity"
+            android:label="@string/binding_import"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".activity.CustomClassNameActivity"
+            android:label="@string/binding_custom_name"
+            android:screenOrientation="portrait" />
+
         <!-- =================【start】 自定义属性部分 【start】=================== -->
         <activity
             android:name="com.renj.databinding.activity.CustomBindingActivity"

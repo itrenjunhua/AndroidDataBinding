@@ -13,6 +13,8 @@
     <string name="binding_list">列表/动态ViewDataBinding</string>
     <string name="binding_include">Include</string>
     <string name="binding_view_stub">ViewStub</string>
+    <string name="binding_import">导包和定义别名</string>
+    <string name="binding_custom_name">自定义Binding类名</string>
     <string name="binding_converters">Converters</string>
     <string name="binding_component">修改默认Component</string>
 

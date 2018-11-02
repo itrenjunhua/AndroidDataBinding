@@ -18,6 +18,10 @@ public class UserBean {
     private String username;
     private String address;
 
+    public UserBean(String username) {
+        this.username = username;
+    }
+
     public UserBean(String username, String address) {
         this.username = username;
         this.address = address;

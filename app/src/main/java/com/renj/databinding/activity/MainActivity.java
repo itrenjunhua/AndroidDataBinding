@@ -61,6 +61,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, CustomBindingActivity.class));
         }
 
+        // 导包和定义别名示例页面
+        public void openImportActivity(View view){
+            startActivity(new Intent(MainActivity.this, ImportActivity.class));
+        }
+
+        // 自定义Binding类名示例页面
+        public void openCustomClassNameActivity(View view){
+            startActivity(new Intent(MainActivity.this, CustomClassNameActivity.class));
+        }
+
         // Converters/转换示例页面
         public void openConvertersBindingActivity(View view) {
             startActivity(new Intent(MainActivity.this, ConvertersActivity.class));

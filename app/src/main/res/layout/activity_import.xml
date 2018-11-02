@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="com.renj.databinding.entity.OneWayBean" />
+        <import
+            alias="User"
+            type="com.renj.databinding.entity.UserBean" />
+
+        <variable
+            name="user"
+            type="User" />
+
+        <variable
+            name="oneWayBean"
+            type="OneWayBean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="&lt;import type='com.renj.databinding.entity.UserBean' alias='User'&gt;，注意别名和定义的变量名不能相同"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/default_text_size" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名:"
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{user.username}'
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_line_space"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FirstName:"
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{oneWayBean.firstName}'
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/default_text_size" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>
