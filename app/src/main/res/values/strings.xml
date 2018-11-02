@@ -10,7 +10,7 @@
 
     <string name="binding_event">事件绑定</string>
     <string name="binding_collection">集合</string>
-    <string name="binding_list">列表</string>
+    <string name="binding_list">列表/动态ViewDataBinding</string>
     <string name="binding_include">Include</string>
     <string name="binding_view_stub">ViewStub</string>
     <string name="binding_converters">Converters</string>

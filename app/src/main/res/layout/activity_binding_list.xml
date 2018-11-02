@@ -3,12 +3,23 @@
 
     <data>
 
+        <import type="com.renj.databinding.activity.ListBindingActivity.MyAdapter"/>
+
+        <variable
+            name="adapter"
+            type="MyAdapter" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adapter="@{adapter}" />
 
     </LinearLayout>
 
