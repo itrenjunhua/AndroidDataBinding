@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <variable
+            name="presenter"
+            type="com.renj.databinding.activity.custom.BindingAdapterActivity.Presenter"/>
+
+        <variable
+            name="url"
+            type="String" />
 
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/default_padding">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="切换图片"
+            android:onClick="@{presenter::click}"
+            android:textColor="@color/color_main_text"
+            android:textSize="@dimen/default_text_size" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="@dimen/default_line_space"
+            app:url="@{url}" />
 
     </LinearLayout>
 
