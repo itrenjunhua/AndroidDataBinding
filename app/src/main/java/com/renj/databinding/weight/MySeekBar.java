@@ -1,4 +1,4 @@
-package com.renj.databinding.bindingadapter;
+package com.renj.databinding.weight;
 
 import android.content.Context;
 import android.databinding.BindingAdapter;

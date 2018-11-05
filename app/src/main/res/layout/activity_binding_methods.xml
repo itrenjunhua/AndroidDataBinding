@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
+        <variable
+            name="content"
+            type="android.databinding.ObservableField&lt;String>" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/default_padding">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入内容"
+            android:text="@={content}"
+            android:textColor="@color/color_main_text"
+            android:textColorHint="@color/color_main_hint"
+            android:textSize="@dimen/default_text_size" />
+
+        <com.renj.databinding.weight.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{content}"
+            android:textColor="@color/color_main_text"
+            android:textSize="@dimen/default_text_size"
+            app:textChangeToast="@{content.get()}" />
 
     </LinearLayout>
 

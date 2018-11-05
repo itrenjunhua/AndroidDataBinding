@@ -36,7 +36,7 @@
 
         </LinearLayout>
 
-        <com.renj.databinding.bindingadapter.MySeekBar
+        <com.renj.databinding.weight.MySeekBar
             android:layout_width="match_parent"
             android:layout_height="8dp"
             android:layout_marginTop="@dimen/default_padding"

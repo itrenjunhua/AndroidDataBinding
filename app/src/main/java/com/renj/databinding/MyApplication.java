@@ -1,6 +1,7 @@
 package com.renj.databinding;
 
 import android.app.Application;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 
 import com.renj.databinding.component.ReleaseBindingComponent;
@@ -21,10 +22,16 @@ import com.renj.databinding.component.ReleaseBindingComponent;
  */
 public class MyApplication extends Application {
     public static boolean isTestComponent = false;
+    private static Context context;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        context = this;
         DataBindingUtil.setDefaultComponent(new ReleaseBindingComponent());
+    }
+
+    public static Context getContext(){
+        return context;
     }
 }

@@ -8,10 +8,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.view.View;
-import android.widget.Toast;
 
 import com.renj.databinding.R;
 import com.renj.databinding.databinding.ActivityBindingEventBinding;
+import com.renj.databinding.utils.UIUtil;
 
 /**
  * ======================================================================
@@ -47,26 +47,26 @@ public class EventBindingActivity extends AppCompatActivity {
         public void click(View view) {
             int viewId = view.getId();
             if (viewId == R.id.bt_click1) {
-                Toast.makeText(EventBindingActivity.this, "通过id区分事件1", Toast.LENGTH_SHORT).show();
+                UIUtil.showToast("通过id区分事件1");
             } else if (viewId == R.id.bt_click2) {
-                Toast.makeText(EventBindingActivity.this, "通过id区分事件2", Toast.LENGTH_SHORT).show();
+                UIUtil.showToast("通过id区分事件2");
             }
         }
 
         public void clickMethod1(View view) {
-            Toast.makeText(EventBindingActivity.this, "调用单个方法1", Toast.LENGTH_SHORT).show();
+            UIUtil.showToast("调用单个方法1");
         }
 
         public void clickMethod2(View view) {
-            Toast.makeText(EventBindingActivity.this, "调用单个方法2", Toast.LENGTH_SHORT).show();
+            UIUtil.showToast("调用单个方法2");
         }
 
         public void lambdaMethod(View view) {
-            Toast.makeText(EventBindingActivity.this, "Lambda表达式方式", Toast.LENGTH_SHORT).show();
+            UIUtil.showToast("Lambda表达式方式");
         }
 
         public void paramsMethod(View view, Context context, String params) {
-            Toast.makeText(context, params, Toast.LENGTH_SHORT).show();
+            UIUtil.showToast(params);
         }
 
         public void onEditTextChange(Editable editable) {

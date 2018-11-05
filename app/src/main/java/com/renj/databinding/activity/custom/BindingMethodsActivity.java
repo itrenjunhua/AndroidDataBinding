@@ -1,6 +1,7 @@
 package com.renj.databinding.activity.custom;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -24,10 +25,14 @@ import com.renj.databinding.databinding.ActivityBindingMethodsBinding;
  */
 public class BindingMethodsActivity extends AppCompatActivity {
     private ActivityBindingMethodsBinding binding;
+    public final ObservableField<String> observableField = new ObservableField<>();
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_binding_methods);
+        observableField.set("");
+        binding.setContent(observableField);
     }
 }
