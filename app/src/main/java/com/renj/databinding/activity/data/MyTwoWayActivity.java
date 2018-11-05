@@ -1,6 +1,7 @@
 package com.renj.databinding.activity.data;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableInt;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -25,9 +26,14 @@ import com.renj.databinding.databinding.ActivityDataMyTwoBinding;
 public class MyTwoWayActivity extends AppCompatActivity {
     private ActivityDataMyTwoBinding binding;
 
+    public final ObservableInt myProgress = new ObservableInt();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_data_my_two);
+
+        myProgress.set(0);
+        binding.setMyProgress(myProgress);
     }
 }
