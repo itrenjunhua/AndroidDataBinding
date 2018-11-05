@@ -358,6 +358,19 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
     observableMap.put("firstName","Zhang");
     observableMap.put("lastName","San");
 
+#### 目前Android支持的双向绑定控件(其他的我们也可以自定义)：
+
+ * AbsListView android:selectedItemPosition
+ * CalendarView android:date
+ * CompoundButton android:checked
+ * DatePicker android:year, android:month, android:day
+ * NumberPicker android:value
+ * RadioGroup android:checkedButton
+ * RatingBar android:rating
+ * SeekBar android:progress
+ * TabHost android:currentTab
+ * TextView android:text
+ * TimePicker android:hour, android:minute
 
 
 
