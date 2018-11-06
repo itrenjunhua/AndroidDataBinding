@@ -1,5 +1,7 @@
 # Android DataBinding
 
+[DataBinding 文档](https://developer.android.google.cn/topic/libraries/data-binding/)
+
 ## 项目功能列表
 ![Android DataBinding](databinding.png)
 
@@ -78,11 +80,12 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
 
 ### 5、Activity 类中修改
 > ① 修改 `setContentView()` 方法为
-`ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);`
-> ② 设置 XML 中需要的变量值 `binding.setUser(new UserBean("张三", "浙江省杭州市"));`
+`ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);`  
+> ② 设置 XML 中需要的变量值 `binding.setUser(new UserBean("张三", "浙江省杭州市"));`  
+
 * **注意：类名 `ActivityMainBinding` 是根据布局文件名 "activity_main" 自动生成的，规则为：第一个字母大写，下划线去掉，下划线之后的第一个字母大写(驼峰式命名方式)，然后加上'Binding'，组成Binding类的类名。当然也可以自定义，<a href="#custom_class_name">点击查看</a>**
 
-## 事件绑定
+## [事件绑定](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/activity/EventBindingActivity.java)
 > 事件绑定
 
 ① 定义事件处理对象
@@ -237,7 +240,7 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
 
     binding.setPresenter(new Presenter());
 
-## 在 data 标签中导入类、定义别名
+## 在 data 标签中 [导入类、定义别名](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/res/layout/activity_import.xml)
 
     <data>
         <import type="com.renj.databinding.entity.OneWayBean" />
@@ -254,7 +257,7 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
 
 * **注意别名和定义的变量名不能相同**
 
-## <a name="custom_class_name">自定义Binding类名</a>
+## <a name="custom_class_name">自定义 [Binding类名](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/res/layout/activity_bind_class_name.xml) </a>
 
      <!--自定义包名和类名-->
     <!--<data class="com.ren.databinding.custom.CustomClassNameBinding">-->
@@ -298,9 +301,9 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
 
     android:text="@{user.displayName != null ? user.displayName : user.lastName}"
 
-## 双向绑定
+## <a name="two_way">双向绑定</a>
 
-我们使用 `@{}` 时表示单向绑定，而使用双向绑定也很简单，使用 `@={}` 即可。
+我们使用 `@{}` 时表示单向绑定，而使用 [双向绑定](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/res/layout/activity_data_two_way.xml) 也很简单，使用 `@={}` 即可。
 **前提：**
 > 我们的数据对象需要继承 `android.databinding.BaseObservable` 类，并且做如下处理：
 使用 `@Bindable` 注解标记 `getXxx` 方法，在 `setXxx` 方法中通知发生改变(notifyPropertyChanged)
@@ -351,6 +354,7 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
 * ObservableDouble
 * ObservableParcelable
 * ObservableField<T>
+
 ---
 例：
 
@@ -358,25 +362,359 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
     observableMap.put("firstName","Zhang");
     observableMap.put("lastName","San");
 
-#### 目前Android支持的双向绑定控件(其他的我们也可以自定义)：
+#### 目前Android支持的双向绑定控件 <a href="#custom_two_way">(其他的我们也可以自定义)</a>：
 
- * AbsListView android:selectedItemPosition
- * CalendarView android:date
- * CompoundButton android:checked
- * DatePicker android:year, android:month, android:day
- * NumberPicker android:value
- * RadioGroup android:checkedButton
- * RatingBar android:rating
- * SeekBar android:progress
- * TabHost android:currentTab
- * TextView android:text
- * TimePicker android:hour, android:minute
+![Android支持的双向绑定控件及属性说明](android_two_way.png)
 
+## [动态 ViewDataBinding](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/activity/ListBindingActivity.java)
+[有时候我们可能不知道Binding类的名称](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/activity/ListBindingActivity.java) ，比如 `RecyclerView.Adapter` 中item布局可能有很多，并不会对应特定的Binding类，但是仍然需要通过 `onBindViewHolder(VH, int)` 去绑定数据，下面的列子是，所有的子布局都有一个"item"变量，通过ViewDataBinding基类去完成绑定：
 
+    @Override
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        ViewDataBinding viewDataBinding = holder.getViewDataBinding();
+        viewDataBinding.setVariable(BR.itemValue, dataList.get(position));
+        viewDataBinding.executePendingBindings();
+    }
 
-
+* 当一个变量被绑定或者绑定的对象发生变化是，DataBinding会让这些改变排队去在下一帧刷新之前改变，有些时候binding效果必须立刻执行，这时候可以使用 `executePendingBindings()`。
 
 
+## Include 使用
+[DataBinding 和 include 一起使用时](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/activity/IncludeBindingActivity.java) ，和普通的 include 使用并无太大不同，只需要把所需的绑定数据传给 include 布局即可。
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+        <data>
+
+            <variable
+                name="user"
+                type="com.renj.databinding.entity.UserBean" />
+        </data>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/include_layout"
+                bind:user="@{user}" />
+
+        </LinearLayout>
+
+    </layout>
+
+> include 布局 XML 文件
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <data>
+
+            <variable
+                name="user"
+                type="com.renj.databinding.entity.UserBean" />
+        </data>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </layout>
+
+**注意：include 布局 XML 文件的根节点不能是 `merge` 标签**
+
+## ViewStub 使用
+[DataBinding在ViewStub中使用](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/activity/ViewStubBindingActivity.java) ，我们需要创建一个监听器，当ViewStub的布局完成时，将绑定数据设置进去。
+
+> 包含 ViewStub 控件的布局
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <data>
+
+        </data>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ViewStub
+                android:id="@+id/view_stub"
+                android:layout="@layout/view_stub_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </layout>
+
+
+> view_stub_layout 布局
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <data>
+
+            <variable
+                name="user"
+                type="com.renj.databinding.entity.UserBean" />
+        </data>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </layout>
+
+> 在代码中使用
+
+    // 设置监听，控件显示完成之后绑定数据
+    binding.viewStub.setOnInflateListener(new ViewStub.OnInflateListener() {
+        @Override
+        public void onInflate(ViewStub stub, View inflated) {
+            // ViewStub 使用 DataBindingUtil 的方式
+            ViewStubLayoutBinding viewStubLayoutBinding = DataBindingUtil.bind(inflated);
+            viewStubLayoutBinding.setUser(new UserBean("李四", "湖南省长沙市"));
+        }
+    });
+
+    // 显示 ViewStub 控件
+    binding.viewStub.getViewStub().inflate();
+
+## 属性设置
+当一个被绑定的数据的值发生改变时，Binding类会自动寻找该View上的绑定表达式上的方法去改变View，通过Google数据绑定框架我们可以去自定义这些方法。
+
+对于一个xml的attribute，DataBinding会去寻找 setAttribute 方法，xml 属性的命名空间是没有关系的。比如TextView上的一个属性 `android:text`，会去寻找 `setText(String)`。如果表达式返回的是 `int` 则会去寻找 `setText(int)`，所以必须确保xml中表达式返回正确的数据类型，必要时需要数据转换。
+我们可以比较容易地为任何属性创造出setter去使用DataBinding。比如support包下的 `DrawerLayout` 没有任何属性，但是却有很多setter，下面利用这些已有的setter中的一个：
+
+    <android.support.v4.widget.DrawerLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:scrimColor="@{@color/scrim}"
+        app:drawerListener="@{fragment.drawerListener}"/>
+
+## 自定义属性
+一些xml属性需要自己去定义并实现逻辑，那么我们可以使用 `BindingAdapter`、`BindingMethods`、 `BindingMethod` 注解去自定义个自己的 setter：
+
+> `BindingAdapter` [使用](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/bindingadapter/ImageViewAdapter.java)
+
+    @BindingAdapter(value = {"app:url"})
+    public static void setImageUrl(ImageView imageView, String url) {
+        Glide.with(imageView).load(url).into(imageView);
+    }
+
+以上代码我们给 `ImageView` 控件自定义了一个 `url` 属性，那么在XML布局中使用 `ImageView` 控件时就可以直接使用该属性，并且会自动使用Glide加载图片( [以上代码的位置随意，建议写在一个新的独立类中](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/bindingadapter/ImageViewAdapter.java) )：
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/default_line_space"
+        app:url="@{url}" />
+
+> `BindingMethods` 和 `BindingMethod` [需要一起使用](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/weight/MyTextView.java) ：
+
+    @BindingMethods({
+            @BindingMethod(type = MyTextView.class, attribute = "textChangeToast", method = "onTextChangeToast")
+    })
+    public class MyTextView extends android.support.v7.widget.AppCompatTextView {
+        public MyTextView(Context context) {
+            super(context);
+        }
+
+        public MyTextView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+        }
+
+        public MyTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+            super(context, attrs, defStyleAttr);
+        }
+
+        public void onTextChangeToast(String content) {
+            UIUtil.showToast(content);
+        }
+    }
+
+* 说明：
+    * type：属性关联的视图类
+    * attribute：重命名的属性。对所有android属性或使用android: namespace应用程序属性没有名称空间
+    * method：触发方法，可以调用来设置属性值的方法
+
+**开发者自定义的BindingAdapter和android自带的发生冲突时，DataBinding会优先采用开发者自定义的**
+
+## <a name="custom_two_way">自定义双向绑定</a>
+前面我们说到了<a href="#two_way">双向绑定</a>，并提到了Android中可以直接使用双向绑定的一些控件，
+但是当我们自定义控件时，默认并不会绑定属性。而单向(正向)绑定，我们可以使用 `BindingAdapter`、`BindingMethods`、 `BindingMethod` 注解来自定义，
+但是如果我们需要实现双向绑定，就还需要实现逆向绑定。DataBinding也为我们 [实现逆向绑定](https://github.com/itrenjunhua/AndroidDataBinding/tree/master/app/src/main/java/com/renj/databinding/weight) 提供了相关的注解：`InverseBindingAdapter` 、 `InverseBindingMethods` 、 `InverseBindingMethod`
+
+> `InverseBindingAdapter` [使用](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/weight/MySeekBar.java)
+
+    public class MySeekBar extends android.support.v7.widget.AppCompatSeekBar {
+        private static InverseBindingListener inverseBindingListener;
+
+        public MySeekBar(Context context) {
+            super(context, null);
+            init();
+        }
+
+        public MySeekBar(Context context, AttributeSet attrs) {
+            super(context, attrs);
+            init();
+        }
+
+        public MySeekBar(Context context, AttributeSet attrs, int defStyleAttr) {
+            super(context, attrs, defStyleAttr);
+            init();
+        }
+
+        private void init() {
+            this.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    // 触发反向数据的传递
+                    if (inverseBindingListener != null)
+                        inverseBindingListener.onChange();
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+        }
+
+        @BindingAdapter(value = "myProgress", requireAll = false)
+        public static void setMyProgress(MySeekBar mySeekBar, int progress) {
+            // 防止死循环
+            if (getMyProgress(mySeekBar) != progress) {
+                mySeekBar.setProgress(progress);
+            }
+        }
+
+        @InverseBindingAdapter(attribute = "myProgress", event = "myProgressAttrChanged")
+        public static int getMyProgress(MySeekBar mySeekBar) {
+            return mySeekBar.getProgress();
+        }
+
+        @BindingAdapter(value = {"myProgressAttrChanged"}, requireAll = false)
+        public static void setMyProgressAttrChanged(MySeekBar mySeekBar, InverseBindingListener inverseBindingListener) {
+            if (inverseBindingListener != null) {
+                MySeekBar.inverseBindingListener = inverseBindingListener;
+            } else {
+                Log.e("MySeekBar", "InverseBindingListener Null Exception");
+            }
+        }
+    }
+
+> `InverseBindingMethods` 、 `InverseBindingMethod` [使用](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/weight/MySeekBar2.java)
+
+    @InverseBindingMethods({
+            @InverseBindingMethod(type = MySeekBar2.class,attribute = "myProgress2",event = "myProgress2AttrChange",method = "getMyProgress2")
+    })
+    public class MySeekBar2 extends android.support.v7.widget.AppCompatSeekBar {
+        private static InverseBindingListener inverseBindingListener;
+
+        public MySeekBar2(Context context) {
+            super(context, null);
+            init();
+        }
+
+        public MySeekBar2(Context context, AttributeSet attrs) {
+            super(context, attrs);
+            init();
+        }
+
+        public MySeekBar2(Context context, AttributeSet attrs, int defStyleAttr) {
+            super(context, attrs, defStyleAttr);
+            init();
+        }
+
+        private void init() {
+            this.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    // 触发反向数据的传递
+                    if (inverseBindingListener != null)
+                        inverseBindingListener.onChange();
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+        }
+
+        public void setMyProgress2(int progress) {
+            // 防止死循环
+            if (getMyProgress2() != progress) {
+                setProgress(progress);
+            }
+        }
+
+        public int getMyProgress2() {
+            return getProgress();
+        }
+
+        public void myProgress2AttrChange(InverseBindingListener inverseBindingListener) {
+            if (inverseBindingListener != null) {
+                MySeekBar2.inverseBindingListener = inverseBindingListener;
+            } else {
+                Log.e("MySeekBar2", "InverseBindingListener Null Exception");
+            }
+        }
+    }
+
+## Converters 使用
+有时候我们想这样写xml属性
+
+    <View
+        android:id="@+id/view_converter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@{status ? @color/color_converter_color1 : @color/color_converter_color2}" />
+
+但是xml属性 `android:background` 的对应set方法 `setBackground()` 接收的参数是一个Drawable，那么就需要通过 `BindingConversion` 注解来实现转换：
+
+    /**
+     * 定义一个 Converter ，将 {@code int} 类型的 {@link android.graphics.Color} 转换为 {@link ColorDrawable}
+     *
+     * @param color
+     * @return
+     */
+    @BindingConversion
+    public static ColorDrawable colorToColorDrawable(int color) {
+        return new ColorDrawable(color);
+    }
+
+* [以上代码的位置随意，建议写在一个新的独立类中](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/conversters/ColorToColorDrawableConverter.java)
+
+## [修改 Component](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/activity/MainActivity.java)
+
+    DataBindingUtil.setDefaultComponent(new TestBindingComponent());
+
+通过修改Component我们可以对指定的使用了DataBinding的控件属性进行统一修改，具体使用 [请查看代码](https://github.com/itrenjunhua/AndroidDataBinding/tree/master/app/src/main/java/com/renj/databinding/component)
 
 
 

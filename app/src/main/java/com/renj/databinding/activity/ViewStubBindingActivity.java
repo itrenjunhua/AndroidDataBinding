@@ -38,6 +38,7 @@ public class ViewStubBindingActivity extends AppCompatActivity {
         binding.viewStub.setOnInflateListener(new ViewStub.OnInflateListener() {
             @Override
             public void onInflate(ViewStub stub, View inflated) {
+                // ViewStub 使用 DataBindingUtil 的方式
                 ViewStubLayoutBinding viewStubLayoutBinding = DataBindingUtil.bind(inflated);
                 viewStubLayoutBinding.setUser(new UserBean("李四", "湖南省长沙市"));
             }
