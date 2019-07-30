@@ -2,6 +2,16 @@
 
 [DataBinding 文档](https://developer.android.google.cn/topic/libraries/data-binding/)
 
+[Android DataBinding 使用博客说明](https://blog.csdn.net/ITRenj/article/details/83781123)
+
+简书：[ViewModel、LiveData 使用](https://www.jianshu.com/p/83cfc46cdebd)
+
+CSDN：[ViewModel、LiveData 使用](https://blog.csdn.net/ITRenj/article/details/96933135)
+
+简书：[ViewModel+LiveData+DataBinding使用](https://www.jianshu.com/p/699cf6117b53)
+
+CSDN：[ViewModel+LiveData+DataBinding使用](https://blog.csdn.net/ITRenj/article/details/97787655)
+
 ## 项目功能列表
 ![Android DataBinding](databinding.png)
 
