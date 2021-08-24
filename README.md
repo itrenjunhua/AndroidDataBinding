@@ -1,8 +1,9 @@
+
 # Android DataBinding
 
 [DataBinding 文档](https://developer.android.google.cn/topic/libraries/data-binding/)
 
-[Android DataBinding 使用博客说明](https://blog.csdn.net/ITRenj/article/details/83781123)
+[Demo 代码 github传送门](https://github.com/itrenjunhua/AndroidDataBinding/) 
 
 简书：[ViewModel、LiveData 使用](https://www.jianshu.com/p/83cfc46cdebd)
 
@@ -11,9 +12,6 @@ CSDN：[ViewModel、LiveData 使用](https://blog.csdn.net/ITRenj/article/detail
 简书：[ViewModel+LiveData+DataBinding使用](https://www.jianshu.com/p/699cf6117b53)
 
 CSDN：[ViewModel+LiveData+DataBinding使用](https://blog.csdn.net/ITRenj/article/details/97787655)
-
-## 项目功能列表
-![Android DataBinding](databinding.png)
 
 ## 简单使用数据绑定
 ### 1、添加 Android DataBinding 支持
@@ -373,8 +371,8 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
     observableMap.put("lastName","San");
 
 #### 目前Android支持的双向绑定控件 <a href="#custom_two_way">(其他的我们也可以自定义)</a>：
+![android_two_way.png](https://upload-images.jianshu.io/upload_images/18657923-2021f1978ad36aec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![Android支持的双向绑定控件及属性说明](android_two_way.png)
 
 ## [动态 ViewDataBinding](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/activity/ListBindingActivity.java)
 [有时候我们可能不知道Binding类的名称](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/activity/ListBindingActivity.java) ，比如 `RecyclerView.Adapter` 中item布局可能有很多，并不会对应特定的Binding类，但是仍然需要通过 `onBindViewHolder(VH, int)` 去绑定数据，下面的列子是，所有的子布局都有一个"item"变量，通过ViewDataBinding基类去完成绑定：
@@ -516,9 +514,12 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
         app:drawerListener="@{fragment.drawerListener}"/>
 
 ## 自定义属性
-一些xml属性需要自己去定义并实现逻辑，那么我们可以使用 `BindingAdapter`、`BindingMethods`、 `BindingMethod` 注解去自定义个自己的 setter：
+一些xml属性需要自己去定义并实现逻辑，那么我们可以使用 `BindingAdapter`、`BindingMethods`、 `BindingMethod` 注解去自定义个自己的 setter，三个注解，但是 `@BindingMethods` 和 `@BindingMethod` 需要一起使用，所以是有两种方式来实现自定义的属性：
 
-> `BindingAdapter` [使用](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/bindingadapter/ImageViewAdapter.java)
+* 方式1：使用 `@BindingAdapter` 方式
+* 方式2：使用 `@BindingMethods` 和 `@BindingMethod` 相结合的方式
+
+### 方式1：[使用](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/bindingadapter/ImageViewAdapter.java) `@BindingAdapter`
 
     @BindingAdapter(value = {"app:url"})
     public static void setImageUrl(ImageView imageView, String url) {
@@ -533,7 +534,9 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
         android:layout_marginTop="@dimen/default_line_space"
         app:url="@{url}" />
 
-> `BindingMethods` 和 `BindingMethod` [需要一起使用](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/weight/MyTextView.java) ：
+`@BindingAdapter` 说明：`@BindingAdapter(value = {"app:url"})`还可以省略部分直接写成 `@BindingAdapter({"url"})`，需要设置多个属性时可以直接写在后面 `@BindingAdapter(value = {"app:url","app:loading","app:error"})`或者省略形式 `@BindingAdapter({"url","loading","error"})`；同时 `@BindingAdapter` 还有一个参数 `requireAll`，设置 `@BindingAdapter(value = {"url","loading","error"}, requireAll = false)` ，`requireAll` 的作用表示我们在 `@BindingAdapter` 中定义的所有属性是不是都需要在 xml 文件中进行设置，如果为 `true` ，表示定义的所有属性都需要在 xml 中设置，默认为 `true`，为 `false`表示可以在 xml 中不需要设置所有定义的属性。
+
+### 方式2：使用 `@BindingMethods` 和 `@BindingMethod` [相结合的方式](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/weight/MyTextView.java) ：
 
     @BindingMethods({
             @BindingMethod(type = MyTextView.class, attribute = "textChangeToast", method = "onTextChangeToast")
@@ -557,18 +560,24 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
     }
 
 * 说明：
-    * type：属性关联的视图类
-    * attribute：重命名的属性。对所有android属性或使用android: namespace应用程序属性没有名称空间
-    * method：触发方法，可以调用来设置属性值的方法
+    * type：要操作的属性属于哪个View类，类型为class对象，比如：ImageView.class
+    * attribute：xml属性，类型为String ，比如："android:tint"
+    * method：指定xml属性对应的set方法(触发方法)，类型为String，比如："setImageTintList"
 
-**开发者自定义的BindingAdapter和android自带的发生冲突时，DataBinding会优先采用开发者自定义的**
+**开发者自定义的@BindingAdapter和android自带的发生冲突时，DataBinding会优先采用开发者自定义的**
 
 ## <a name="custom_two_way">自定义双向绑定</a>
 前面我们说到了<a href="#two_way">双向绑定</a>，并提到了Android中可以直接使用双向绑定的一些控件，
-但是当我们自定义控件时，默认并不会绑定属性。而单向(正向)绑定，我们可以使用 `BindingAdapter`、`BindingMethods`、 `BindingMethod` 注解来自定义，
-但是如果我们需要实现双向绑定，就还需要实现逆向绑定。DataBinding也为我们 [实现逆向绑定](https://github.com/itrenjunhua/AndroidDataBinding/tree/master/app/src/main/java/com/renj/databinding/weight) 提供了相关的注解：`InverseBindingAdapter` 、 `InverseBindingMethods` 、 `InverseBindingMethod`
+但是当我们自定义控件时，默认并不会绑定属性。而单向(正向)绑定，我们可以使用 `@BindingAdapter`、`@BindingMethods`、 `@BindingMethod` 注解来自定义。
 
-> `InverseBindingAdapter` [使用](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/weight/MySeekBar.java)
+但是如果我们需要实现双向绑定，除了实现正向绑定外，还需要实现逆向绑定。DataBinding也为我们 [实现逆向绑定](https://github.com/itrenjunhua/AndroidDataBinding/tree/master/app/src/main/java/com/renj/databinding/weight) 提供了相关的注解：`@InverseBindingAdapter` 、 `@InverseBindingMethods` 、 `@InverseBindingMethod`，同样的有三个注解，但是 `@InverseBindingMethods` 和 `@InverseBindingMethod` 需要一起使用，所以是有两种方式来实现逆向绑定：
+
+* 方式1：使用 `@InverseBindingAdapter` 方式
+* 方式2：使用 `@InverseBindingMethods` 和 `@InverseBindingMethod` 相结合的方式
+
+### 方式1：[使用](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/weight/MySeekBar.java) `@InverseBindingAdapter`
+
+`@InverseBindingAdapter` 需要与 `@BindingAdapter` 配合使用。
 
     public class MySeekBar extends android.support.v7.widget.AppCompatSeekBar {
         private static InverseBindingListener inverseBindingListener;
@@ -632,7 +641,13 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
         }
     }
 
-> `InverseBindingMethods` 、 `InverseBindingMethod` [使用](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/weight/MySeekBar2.java)
+* 说明：
+    * attribute：String 类型，必填，表示当值发生变化时，要从哪个属性中检索这个变化的值；例："android:text"
+    * event： String 类型，非必填，如果填写，则使用填写的内容作为 event 的值；如果不填，在编译时会根据 attribute 的属性名再加上后缀 "AttrChanged" 生成一个新的属性作为 event 的值。作用： 当 View 的值发生改变时用来通知 dataBinding 值已经发生改变了。开发者一般需要使用 `@BindingAdapter` 创建对应属性来响应这种改变
+
+### 方式2：使用 `@InverseBindingMethods` 和 `@InverseBindingMethod` [相结合的方式](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/weight/MySeekBar2.java)
+
+`@InverseBindingMethods` 和 `@InverseBindingMethod` 的使用 与`@BindingMethods` 和 `@BindingMethod` 的使用类似。
 
     @InverseBindingMethods({
             @InverseBindingMethod(type = MySeekBar2.class,attribute = "myProgress2",event = "myProgress2AttrChange",method = "getMyProgress2")
@@ -696,8 +711,16 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
         }
     }
 
+* 说明：
+    * type：要操作的属性属于哪个View类，类型为class对象，比如：ImageView.class
+    * attribute：xml属性，类型为String ，比如："android:tint"
+    * event： String 类型，非必填，如果填写，则使用填写的内容作为 event 的值；如果不填，在编译时会根据 attribute 的属性名再加上后缀 "AttrChanged" 生成一个新的属性作为 event 的值。作用： 当 View 的值发生改变时用来通知 dataBinding 值已经发生改变了。
+    * method：指定xml属性对应的set方法(触发方法)，类型为String，比如："setImageTintList"
+
 ## Converters 使用
-有时候我们想这样写xml属性
+使用`@BindingConversion`注解，作用：用于将表达式类型自动转换为setter中使用的值
+
+有时候我们想这样写xml属性：
 
     <View
         android:id="@+id/view_converter"
