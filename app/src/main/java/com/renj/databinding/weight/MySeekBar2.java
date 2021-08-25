@@ -74,7 +74,7 @@ public class MySeekBar2 extends android.support.v7.widget.AppCompatSeekBar {
         return getProgress();
     }
 
-    public void myProgress2AttrChange(InverseBindingListener inverseBindingListener) {
+    public void setMyProgress2AttrChange(InverseBindingListener inverseBindingListener) {
         if (inverseBindingListener != null) {
             MySeekBar2.inverseBindingListener = inverseBindingListener;
         } else {
