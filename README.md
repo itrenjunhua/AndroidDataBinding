@@ -1,4 +1,5 @@
 
+
 # Android DataBinding
 
 [DataBinding 文档](https://developer.android.google.cn/topic/libraries/data-binding/)
@@ -91,7 +92,7 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
 `ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);`  
 > ② 设置 XML 中需要的变量值 `binding.setUser(new UserBean("张三", "浙江省杭州市"));`  
 
-* **注意：类名 `ActivityMainBinding` 是根据布局文件名 "activity_main" 自动生成的，规则为：第一个字母大写，下划线去掉，下划线之后的第一个字母大写(驼峰式命名方式)，然后加上'Binding'，组成Binding类的类名。当然也可以自定义，<a href="#custom_class_name">点击查看</a>**
+* **注意：类名 `ActivityMainBinding` 是根据布局文件名 "activity_main" 自动生成的，规则为：第一个字母大写，下划线去掉，下划线之后的第一个字母大写(驼峰式命名方式)，然后加上'Binding'，组成Binding类的类名。当然也可以自定义，在后文中有说明【自定义 [Binding类名]】**
 
 ## [事件绑定](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/activity/EventBindingActivity.java)
 > 事件绑定
@@ -265,7 +266,7 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
 
 * **注意别名和定义的变量名不能相同**
 
-## <a name="custom_class_name">自定义 [Binding类名](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/res/layout/activity_bind_class_name.xml) </a>
+## 自定义 [Binding类名](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/res/layout/activity_bind_class_name.xml)
 
      <!--自定义包名和类名-->
     <!--<data class="com.ren.databinding.custom.CustomClassNameBinding">-->
@@ -309,7 +310,7 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
 
     android:text="@{user.displayName != null ? user.displayName : user.lastName}"
 
-## <a name="two_way">双向绑定</a>
+## 双向绑定
 
 我们使用 `@{}` 时表示单向绑定，而使用 [双向绑定](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/res/layout/activity_data_two_way.xml) 也很简单，使用 `@={}` 即可。
 **前提：**
@@ -370,8 +371,8 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
     observableMap.put("firstName","Zhang");
     observableMap.put("lastName","San");
 
-#### 目前Android支持的双向绑定控件 <a href="#custom_two_way">(其他的我们也可以自定义)</a>：
-![android_two_way.png](https://upload-images.jianshu.io/upload_images/18657923-2021f1978ad36aec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+#### 目前Android支持的双向绑定控件(其他的我们也可以自定义)：
+![android_two_way.png](https://upload-images.jianshu.io/upload_images/18657923-dd175ecd44da5bee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ## [动态 ViewDataBinding](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/activity/ListBindingActivity.java)
@@ -521,7 +522,7 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
 
 ### 方式1：[使用](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/bindingadapter/ImageViewAdapter.java) `@BindingAdapter`
 
-    @BindingAdapter(value = {"app:url"})
+    @BindingAdapter(value = {"url"})
     public static void setImageUrl(ImageView imageView, String url) {
         Glide.with(imageView).load(url).into(imageView);
     }
@@ -534,7 +535,7 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
         android:layout_marginTop="@dimen/default_line_space"
         app:url="@{url}" />
 
-`@BindingAdapter` 说明：`@BindingAdapter(value = {"app:url"})`还可以省略部分直接写成 `@BindingAdapter({"url"})`，需要设置多个属性时可以直接写在后面 `@BindingAdapter(value = {"app:url","app:loading","app:error"})`或者省略形式 `@BindingAdapter({"url","loading","error"})`；同时 `@BindingAdapter` 还有一个参数 `requireAll`，设置 `@BindingAdapter(value = {"url","loading","error"}, requireAll = false)` ，`requireAll` 的作用表示我们在 `@BindingAdapter` 中定义的所有属性是不是都需要在 xml 文件中进行设置，如果为 `true` ，表示定义的所有属性都需要在 xml 中设置，默认为 `true`，为 `false`表示可以在 xml 中不需要设置所有定义的属性。
+`@BindingAdapter` 说明：用于自定义属性，需要设置多个属性时可以这样写 `@BindingAdapter({"url","loading","error"})`；同时 `@BindingAdapter` 还有一个参数 `requireAll`，设置 `@BindingAdapter(value = {"url","loading","error"}, requireAll = false)` ，`requireAll` 的作用表示我们在 `@BindingAdapter` 中定义的所有属性是不是都需要在 xml 文件中进行设置，如果为 `true` ，表示定义的所有属性都需要在 xml 中设置，默认为 `true`，为 `false`表示可以在 xml 中不需要设置所有定义的属性。
 
 ### 方式2：使用 `@BindingMethods` 和 `@BindingMethod` [相结合的方式](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/weight/MyTextView.java) ：
 
@@ -566,8 +567,8 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
 
 **开发者自定义的@BindingAdapter和android自带的发生冲突时，DataBinding会优先采用开发者自定义的**
 
-## <a name="custom_two_way">自定义双向绑定</a>
-前面我们说到了<a href="#two_way">双向绑定</a>，并提到了Android中可以直接使用双向绑定的一些控件，
+## 自定义双向绑定
+前面我们说到了双向绑定，并提到了Android中可以直接使用双向绑定的一些控件，
 但是当我们自定义控件时，默认并不会绑定属性。而单向(正向)绑定，我们可以使用 `@BindingAdapter`、`@BindingMethods`、 `@BindingMethod` 注解来自定义。
 
 但是如果我们需要实现双向绑定，除了实现正向绑定外，还需要实现逆向绑定。DataBinding也为我们 [实现逆向绑定](https://github.com/itrenjunhua/AndroidDataBinding/tree/master/app/src/main/java/com/renj/databinding/weight) 提供了相关的注解：`@InverseBindingAdapter` 、 `@InverseBindingMethods` 、 `@InverseBindingMethod`，同样的有三个注解，但是 `@InverseBindingMethods` 和 `@InverseBindingMethod` 需要一起使用，所以是有两种方式来实现逆向绑定：
@@ -643,7 +644,7 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
 
 * 说明：
     * attribute：String 类型，必填，表示当值发生变化时，要从哪个属性中检索这个变化的值；例："android:text"
-    * event： String 类型，非必填，如果填写，则使用填写的内容作为 event 的值；如果不填，在编译时会根据 attribute 的属性名再加上后缀 "AttrChanged" 生成一个新的属性作为 event 的值。作用： 当 View 的值发生改变时用来通知 dataBinding 值已经发生改变了。开发者一般需要使用 `@BindingAdapter` 创建对应属性来响应这种改变
+    * event： String 类型，非必填，如果填写，则使用填写的内容作为 event 的值；如果不填，在编译时会根据 attribute 的属性名再加上后缀 "AttrChanged" 生成一个新的属性作为 event 的值。作用： 当 View 的值发生改变时用来通知 dataBinding 值已经发生改变了。**开发者一般需要使用 `@BindingAdapter` 创建对应属性来响应这种改变（简单来说就是 `@InverseBindingAdapter` 注解的 event 值需要和`@BindingAdapter` 的 value 值相同，对被 `@BindingAdapter`  注解的方法名没有特殊要求，建议使用 setEventValue的方式[EevntValue表示]`@InverseBindingAdapter` 注解的 event 值名）**
 
 ### 方式2：使用 `@InverseBindingMethods` 和 `@InverseBindingMethod` [相结合的方式](https://github.com/itrenjunhua/AndroidDataBinding/blob/master/app/src/main/java/com/renj/databinding/weight/MySeekBar2.java)
 
@@ -714,8 +715,8 @@ Android studio 需要在1.3以上，在module级别的gradle中添加大DataBind
 * 说明：
     * type：要操作的属性属于哪个View类，类型为class对象，比如：ImageView.class
     * attribute：xml属性，类型为String ，比如："android:tint"
-    * event： String 类型，非必填，如果填写，则使用填写的内容作为 event 的值；如果不填，在编译时会根据 attribute 的属性名再加上后缀 "AttrChanged" 生成一个新的属性作为 event 的值。作用： 当 View 的值发生改变时用来通知 dataBinding 值已经发生改变了。
-    * method：指定xml属性对应的set方法(触发方法)，类型为String，比如："setImageTintList"
+    * event： String 类型，非必填，如果填写，则使用填写的内容作为 event 的值；如果不填，在编译时会根据 attribute 的属性名再加上后缀 "AttrChanged" 生成一个新的属性作为 event 的值。比如，如果自己定义了attribute=”xxx”，那么Android系统自动会匹配查找xxxAttrChanged方法，该方法是set开头，那么就最终变成：setXxxAttrChanged；**如果开发者在event里面自己随意定义了一个方法名，那么必须严格一致确保类里面有这个方法，比如，如果用户在InverseBindingMethod的event里面任意定义了一个方法“abcdefg”，那么必须在该注解类有一个同名方法如setAbcdefg()（set是否有都能成功，但是建议加上）**。作用： 当 View 的值发生改变时用来通知 dataBinding 值已经发生改变了。
+    * method：非必填。 如果未提供，则使用属性名称查找方法名称，前缀为“is”或“get”
 
 ## Converters 使用
 使用`@BindingConversion`注解，作用：用于将表达式类型自动转换为setter中使用的值
