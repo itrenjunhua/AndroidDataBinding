@@ -1,8 +1,11 @@
 package com.renj.databinding.activity;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableArrayList;
+import android.databinding.ObservableList;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -15,9 +18,7 @@ import android.view.ViewGroup;
 import com.android.databinding.library.baseAdapters.BR;
 import com.renj.databinding.R;
 import com.renj.databinding.databinding.ActivityBindingListBinding;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.renj.databinding.utils.RecyclerUtils;
 
 /**
  * ======================================================================
@@ -35,7 +36,7 @@ import java.util.List;
  */
 public class ListBindingActivity extends AppCompatActivity {
     private ActivityBindingListBinding binding;
-    private List<String> dataList = new ArrayList<>();
+    private ObservableList<String> dataList = new ObservableArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,11 +46,23 @@ public class ListBindingActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         binding.recyclerView.setLayoutManager(layoutManager);
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        binding.setAdapter(new MyAdapter());
+        MyAdapter myAdapter = new MyAdapter();
+
+        binding.setAdapter(myAdapter);
+        dataList.addOnListChangedCallback(RecyclerUtils.getListChangedCallback(myAdapter));
 
         for (int i = 0; i < 20; i++) {
             dataList.add("list item value -> " + i);
         }
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 5; i++) {
+                    dataList.add("list item value add -> " + i);
+                }
+            }
+        }, 800);
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
